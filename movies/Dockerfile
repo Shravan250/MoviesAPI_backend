@@ -8,7 +8,6 @@ COPY pom.xml .
 COPY mvnw .
 COPY src ./src
 RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
 
 # Copy the built JAR to the container
 COPY target/movies-api-*.jar app.jar

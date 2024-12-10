@@ -20,9 +20,11 @@ public class ReviewService {
     public Review createReview(String reviewBody, String imdbId) {
         Review review = repository.insert(new Review(reviewBody, LocalDateTime.now(), LocalDateTime.now()));
 
+        String reviewId = review.getId().toString();
+
         mongoTemplate.update(Movie.class)
                 .matching(Criteria.where("imdbId").is(imdbId))
-                .apply(new Update().push("reviewIds").value(review.getId()))
+                .apply(new Update().push("reviewIds").value(reviewId))
                 .first();
         return review;
     }

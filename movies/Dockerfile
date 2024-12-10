@@ -4,11 +4,10 @@ FROM eclipse-temurin:23-jdk
 # Set the working directory
 WORKDIR /app
 
-# Copy the Maven build file and source code
 COPY pom.xml .
+COPY mvnw .
 COPY src ./src
-
-# Build the application
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Copy the built JAR to the container

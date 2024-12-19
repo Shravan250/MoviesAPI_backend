@@ -15,7 +15,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Copy the built JAR to the container
-COPY target/movies-api-*.jar app.jar
+COPY target/movies-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the default Spring Boot port
 EXPOSE 8080

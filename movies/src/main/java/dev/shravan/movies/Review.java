@@ -26,4 +26,9 @@ public class Review {
         this.created = created;
         this.updated = updated;
     }
+
+    public String getId() {
+        return id != null ? id.toHexString() : null;
+    }
+
 }
